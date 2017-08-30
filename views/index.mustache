@@ -11,45 +11,45 @@
 </head>
 
 <body>
-     
-<div id="notebook-paper">
-   
-    <div class="header">
-        <h1>To Do List</h1>
-        <div class="input-style">
-            <form action="/" method="post">
-                <input class="add-btn"type="text" name="title" autocomplete="off" required>
-                <button type="submit">+</button>
-            </form>
-            
-       </div>    
-    </div>
-    
-    <div class="incomplete-style">
-        <h2>New Tasks</h2>
-        <ul id="horizontal-list">
 
-            {{#incomplete}}
-            <li class="todo-list">
-                <form action="/todos/{{id}}" method="POST">
-                <input class="done-btn" type="submit" value="x"></form>  {{title}}
-            </li>
-            {{/incomplete}}
+    <div id="notebook-paper">
 
-        </ul>
-    </div>
+        <div class="header">
+            <h1>To Do List</h1>
+            <div class="input-style">
+                <form action="/" method="post">
+                    <input class="add-btn" type="text" name="item" autocomplete="off" required>
+                    <button type="submit">+</button>
+                </form>
 
-    <div class="complete-style">
-        <h2>Completed Tasks</h2>
-            <ul>
-                {{#complete}}
-                <li class="completed-list">
-                    {{title}}
+            </div>
+        </div>
+
+        <div class="incomplete-style">
+            <h2>New Tasks</h2>
+            <ul id="horizontal-list">
+
+                {{#item}}
+                <li class="todo-list">
+                    <form action="/todos/{{id}}" method="POST">
+                        <input class="done-btn" type="submit" value="x"></form> {{item}}
                 </li>
-                {{/complete}}
+                {{/item}}
+
             </ul>
+        </div>
+
+        <div class="complete-style">
+            <h2>Completed Tasks</h2>
+            <ul>
+                {{#is_complete}}
+                <li class="completed-list">
+                    {{item}}
+                </li>
+                {{/is_complete}}
+            </ul>
+        </div>
     </div>
-</div>
 
 </body>
 
