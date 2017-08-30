@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do List</title>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+     
+<div id="notebook-paper">
+   
+    <div class="header">
+        <h1>To Do List</h1>
+        <div class="input-style">
+            <form action="/" method="post">
+                <input class="add-btn"type="text" name="title" autocomplete="off" required>
+                <button type="submit">+</button>
+            </form>
+            
+       </div>    
+    </div>
+    
+    <div class="incomplete-style">
+        <h2>New Tasks</h2>
+        <ul id="horizontal-list">
+
+            {{#incomplete}}
+            <li class="todo-list">
+                <form action="/todos/{{id}}" method="POST">
+                <input class="done-btn" type="submit" value="x"></form>  {{title}}
+            </li>
+            {{/incomplete}}
+
+        </ul>
+    </div>
+
+    <div class="complete-style">
+        <h2>Completed Tasks</h2>
+            <ul>
+                {{#complete}}
+                <li class="completed-list">
+                    {{title}}
+                </li>
+                {{/complete}}
+            </ul>
+    </div>
+</div>
+
+</body>
+
+</html>

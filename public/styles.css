@@ -1,0 +1,142 @@
+body {
+    background: #f1f1f1;
+    font-family: 'Patrick Hand SC', cursive;
+    /* display: flex;
+    justify-content: center; */
+}
+ 
+
+.header {
+    width:100%;
+    background-color:white;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+h1 {
+    margin: 40px 0 0 0;
+    color: #f4426b;
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 1;
+    text-align: center;
+}
+
+h2 {
+   color: #344d75;
+   /* font-size: 1.5rem; */
+   font-weight: 100;
+   /* text-align: left; */
+}
+
+
+  #notebook-paper {
+    background: linear-gradient(to bottom,white 29px,#00b0d7 1px);
+    box-shadow: 0 0 7px rgba(25, 25, 25, 0.2);
+    margin: 50px auto;
+    background-size: 100% 30px;
+    position: relative;
+    padding: 100px 100px 100px 140px;
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.input-style {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+input.add-btn {
+    border: none;
+    border-bottom: 1px dashed grey;
+    background-color: #fff;
+    padding-bottom: 5px;
+    outline: none;
+    font-size: 1.5rem;
+    width: 10rem;
+    font-family: 'Patrick Hand SC', cursive;
+    margin: 10px 10px 0px 45px;
+}
+
+
+#notebook-paper:before {
+    content:'';
+    display:block;
+    position:absolute;
+    z-index:1;
+    top:0;
+    left:120px;
+    height:100%;
+    width:1px;
+    background:#db4034;
+}
+    
+.incomplete-style {
+    margin-top:30px;
+    font-size:20px;
+    line-height:30px;
+}
+
+.complete-style {
+    margin-top:20px;
+    font-size:20px;
+    /* line-height:30px; */
+    padding-bottom: 40px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+ul li.completed-list:before {
+    content: '✓';
+    color: #21b267;
+
+}
+
+
+ul li.completed-list {
+    margin: 6px 0;
+}
+
+ul li.todo-list {
+  color: red;
+}
+
+button {
+    background-color: #f4426b;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.done-btn {
+    background-color: #f4426b;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    float: right;
+}
+
+button:hover {
+    background-color: #344d75;
+    color: #f4426b;
+}
+
+
+.todo-list {
+    display: flex;
+}
+
