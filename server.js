@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
     todo
-        .findAll({ where: { is_complete: 'f' } })
+        .findAll()
         .then(function (todos) {
             return res.render("index", { item: todos })
         })
@@ -27,19 +27,8 @@ app.get("/", (req, res) => {
         });
 });
 
-// app.get("/", function (req, res) {
-//     models.todo
-//         .findAll({ order: [['createdAt', 'DESC']] })
-//         .then(function (foundTodo) {
-//             res.render("index", { listBox: foundTodo });
-//         })
-//         .catch(function (err) {
-//             res.status(500).send(err);
-//         });
-// });
-
-//New todo items
-app.post("/", (req, res) => {
+//ADD New todo items
+app.post("/additem", (req, res) => {
     todo.create({
         item: req.body.item,
         is_complete: 'f'
@@ -47,26 +36,72 @@ app.post("/", (req, res) => {
         .then(function (newTodo) {
             return res.redirect("/");
         })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
+});
+
+///////move them to the completed list
+app.post("/completed", function (req, res) {
+    todo.update({
+        is_complete: 't'
+    }, {
+            where: {
+                item: req.body.item
+            }
+        }).then(function (newTodo) {
+            return res.redirect("/");
+        })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
+});
+
+//////// CLEAR ALL ///////////
+app.post("/clearall", function (req, res) {
+    todo.destroy({
+        where: {
+            is_complete: 't'
+        }
+    }).then(function () {
+        return res.redirect("/");
+    })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
 });
 
 
-// app.post("/todos", (req, res) => {
-//     todo.findbyId(req.params.id).then(
-//         function (result) {
-//             if (result.update)
-//         }
-//         is_complete: 't'
-//     }, {
-//         where: {
-//             item: req.body.item
-//         }
-//     }).then(function (todos) { });
-// return res.redirect("/");
+//////// DELETE INDIVIDUAL TODOS ///////////
+app.post("/deleteOne", function (req, res) {
+    todo.destroy({
+        where: {
+            item: req.body.item
+        }
+    }).then(function () {
+        return res.redirect("/");
+    })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
+});
 
-// })
 
-// { is_complete: todos }
-
+/////////////to update
+app.post("/update/:id", function (req, res) {
+    todo.update({
+        item: req.body.item
+    }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (newTodo) {
+            return res.redirect("/");
+        })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
+});
 
 
 

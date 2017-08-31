@@ -90,13 +90,20 @@ ul {
     list-style-type: none;
 }
 
-ul li.completed-list:before {
+
+/* ul li.completed-list:before {
     content: '✓';
     color: #21b267;
+} */
+
+.update-btn {
+    content: '✏';
+    color: #2086B2;
 }
 
 ul li.completed-list {
     margin: 6px 0;
+    text-decoration: line-through;
 }
 
 

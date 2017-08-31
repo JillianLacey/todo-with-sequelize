@@ -17,7 +17,7 @@
         <div class="header">
             <h1>To Do List</h1>
             <div class="input-style">
-                <form action="/" method="post">
+                <form action="/additem" method="post">
                     <input class="add-btn" type="text" name="item" autocomplete="off" required>
                     <button type="submit">+</button>
                 </form>
@@ -29,27 +29,53 @@
             <h2 class="incomplete-h2">New Tasks</h2>
             <ul id="horizontal-list">
 
-                {{#item}}
-                <li class="todo-list">
-                    <form action="/todos/{{id}}" method="POST">
-                        <input class="done-btn" type="submit" value="x"></form> {{item}}
-                </li>
-                {{/item}}
+                {{#item}}{{^is_complete}}
+                <form action="/completed" method="POST">
+                    <button class="done-btn" type="submit" name="item" value="{{item}}">Complete</button>
+                </form>
+                <form action="/deleteOne" method="POST">
+                    <button class="done-btn" type="submit" name="item" value="{{item}}">X</button>
+                </form>
 
+                <li class="todo-list">{{item}}</li><button onclick="toggleVisible(display_{{id}});">✏</button>
+                <div id="display_{{id}}" style="visibility:hidden;">
+                    <form action="/update/{{id}}" method="POST">
+                        <input value="{{item}}" name="item">
+                        <button class="update-btn" type="submit" onclick="toggleHidden(display_{{id}});">Done</button>
+                    </form>
+                </div>
+
+
+
+                {{/is_complete}} {{/item}}
             </ul>
         </div>
 
         <div class="complete-style">
             <h2 class="complete-h2">Completed Tasks</h2>
-            <ul>
-                {{#is_complete}}
+
+            <form action="/clearall" method="POST">
+                <button class="" type="submit" name="item" value="{{item}}">Clear Completed</button>
+            </form>
+
+            <ul>{{#item}} {{#is_complete}}
                 <li class="completed-list">
                     {{item}}
                 </li>
-                {{/is_complete}}
+                {{/is_complete}} {{/item}}
             </ul>
         </div>
+
     </div>
+
+    <script>
+        function toggleVisible(x) {
+            x.style.visibility = 'visible';
+        }
+        function toggleHidden(x) {
+            x.style.visibility = 'hidden';
+        }
+    </script>
 
 </body>
 
