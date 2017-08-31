@@ -73,9 +73,10 @@ input.add-btn {
 }
 
 .incomplete-style {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     font-size: 20px;
-    line-height: 30px;
+    line-height: 30.5px;
+    margin: 29px 0 25px 0;
 }
 
 .complete-style {
@@ -98,41 +99,54 @@ ul li.completed-list {
     margin: 6px 0;
 }
 
-ul li.todo-list {
+
+/* ul li.todo-list {
     color: red;
-}
+} */
 
 button {
-    background-color: #f4426b;
+    background-color: white;
     cursor: pointer;
     border: none;
-    color: #fff;
+    color: #f4426b;
     border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    /* font-weight: 700; */
 }
 
 .done-btn {
-    background-color: #f4426b;
+    background-color: white;
     cursor: pointer;
     border: none;
-    color: #fff;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 700;
-    float: right;
+    color: #f4426b;
+    /* border-radius: 20px; */
+    font-size: .9rem;
+    /* font-weight: 700; */
+    float: left;
+    /* text-align: center; */
+    margin: 4px 9px 0 0;
+}
+
+.done-btn:hover {
+    color: #344d75;
 }
 
 button:hover {
-    background-color: #344d75;
-    color: #f4426b;
+    color: #344d75;
 }
 
 .todo-list {
-    display: flex;
+    display: inline;
 }
 
 
 /* p::before {
     content: "Read this -";
 } */
+
+
+/* .incomplete-h2 {}
+
+.complete-h2 {}
+
+#horizontal-list {} */

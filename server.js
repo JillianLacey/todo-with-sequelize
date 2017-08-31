@@ -17,16 +17,26 @@ app.set("view engine", "mustache");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-    todo.findAll({
-        where: {
-            is_complete: 'f'
-        }
-    }).then(function (todos) {
-
-        return res.render("index", { item: todos })
-    })
+    todo
+        .findAll({ where: { is_complete: 'f' } })
+        .then(function (todos) {
+            return res.render("index", { item: todos })
+        })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
 });
 
+// app.get("/", function (req, res) {
+//     models.todo
+//         .findAll({ order: [['createdAt', 'DESC']] })
+//         .then(function (foundTodo) {
+//             res.render("index", { listBox: foundTodo });
+//         })
+//         .catch(function (err) {
+//             res.status(500).send(err);
+//         });
+// });
 
 //New todo items
 app.post("/", (req, res) => {
