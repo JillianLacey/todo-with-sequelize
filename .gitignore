@@ -1,3 +1,5 @@
 node_modules 
 config
 example.mustache
+dup.mustache
+example.mustache
