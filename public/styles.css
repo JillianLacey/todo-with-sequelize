@@ -84,7 +84,7 @@ input.add-btn {
 }
 
 .complete-style {
-    margin-top: 20px;
+    margin-top: -52px;
     font-size: 20px;
     padding-bottom: 40px;
 }
@@ -102,56 +102,33 @@ button {
     outline: none;
 }
 
-
-/* ul {
-    list-style-type: none;
-} */
-
-
-/* ul li.completed-list:before {
-    content: '✓';
-    color: #21b267;
-} */
-
-ul li.completed-list {
-    margin: 6px 0;
+.completed-list {
+    margin: 5px 0 0 6px;
     text-decoration: line-through;
 }
 
 .done-btn {
-    background-color: white;
     cursor: pointer;
     border: none;
     color: #21b267;
-    font-size: .9rem;
+    font-size: 1.2rem;
     float: left;
-    margin: 4px 9px 0 0;
-}
-
-.done-btn:hover {
-    color: #344d75;
+    margin: 2px 0px 0 0;
+    font-weight: 700;
 }
 
 .del-btn {
-    background-color: white;
     cursor: pointer;
     border: none;
     color: #f4426b;
-    font-size: .9rem;
+    font-size: 1.3rem;
     float: left;
-    margin: 4px 9px 0 0;
+    margin: 1px 0 0 0;
 }
 
 .update-btn {
-    content: '✏';
     color: #2086B2;
-    transform: rotate(-40deg);
     font-size: 1.1rem;
-}
-
-.update-btn:before {
-    content: '✏';
-    color: #2086B2;
 }
 
 button:hover {
@@ -162,6 +139,29 @@ button:hover {
     display: inline;
 }
 
+.done-edit-btn {
+    cursor: pointer;
+    border: none;
+    color: #2086B2;
+    font-size: .9rem;
+    margin: 1px 0 0 0;
+    font-weight: 600;
+}
+
+.edit-input {
+    border: none;
+    text-align: center;
+    font-family: 'Patrick Hand SC', cursive;
+    font-size: 1rem;
+    font-style: italic;
+    outline: none;
+}
+
 .clear-btn {
-    content: '✓';
+    margin: -13px 0 0 0;
+    font-size: 1.5rem;
+}
+
+.clear {
+    font-family: 'Patrick Hand SC', cursive;
 }

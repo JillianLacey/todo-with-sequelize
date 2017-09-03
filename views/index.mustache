@@ -8,6 +8,7 @@
     <title>To Do List</title>
     <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -27,44 +28,43 @@
 
         <div class="incomplete-style">
             <h2 class="incomplete-h2">New Tasks</h2>
-        
 
-                {{#item}}{{^is_complete}}
-                <p class="todo-list">{{item}}</p>
-                <form action="/completed" method="POST">
-                    <button class="done-btn" type="submit" name="item" value="{{item}}">✓</button>
+
+            {{#item}}{{^is_complete}}
+
+            <form action="/completed" method="POST">
+                <button class="done-btn" type="submit" name="item" value="{{item}}"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </form>
+            <form action="/deleteOne" method="POST">
+                <button class="del-btn" type="submit" name="item" value="{{item}}"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </form>
+            <button class="update-btn" onclick="toggleVisible(display_{{id}});"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <p class="todo-list">{{item}}</p>
+            <div id="display_{{id}}" style="visibility:hidden;">
+                <form action="/update/{{id}}" method="POST">
+                    <input class="edit-input" value="{{item}}" name="item">
+                    <button class="done-edit-btn" type="submit" onclick="toggleHidden(display_{{id}});">Done</button>
                 </form>
-                <form action="/deleteOne" method="POST">
-                    <button class="del-btn" type="submit" name="item" value="{{item}}">X</button>
-                </form>
-                <button class="update-btn" onclick="toggleVisible(display_{{id}});"></button>
-                
-                <div id="display_{{id}}" style="visibility:hidden;">
-                    <form action="/update/{{id}}" method="POST">
-                        <input value="{{item}}" name="item">
-                        <button class="done-btn" type="submit" onclick="toggleHidden(display_{{id}});">Done</button>
-                    </form>
-                </div>
+            </div>
 
 
 
-                {{/is_complete}} {{/item}}
-   
+            {{/is_complete}} {{/item}}
+
         </div>
 
         <div class="complete-style">
             <h2 class="complete-h2">Completed Tasks</h2>
-
             <form action="/clearall" method="POST">
-                <button class="clear-btn" type="submit" name="item" value="{{item}}">Clear Completed</button>
+                <button class="clear-btn" type="submit" name="item" value="{{item}}"><i class="fa fa-trash-o" aria-hidden="true"><span class="clear">&nbsp;Clear All</span></i></button>
             </form>
 
-           {{#item}} {{#is_complete}}
-                <p class="completed-list">
-                    {{item}}
-                </p>
-                {{/is_complete}} {{/item}}
-          
+            {{#item}} {{#is_complete}}
+            <p class="completed-list">
+                {{item}}
+            </p>
+            {{/is_complete}} {{/item}}
+
         </div>
 
     </div>
