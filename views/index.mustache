@@ -27,43 +27,44 @@
 
         <div class="incomplete-style">
             <h2 class="incomplete-h2">New Tasks</h2>
-            <ul id="horizontal-list">
+        
 
                 {{#item}}{{^is_complete}}
+                <p class="todo-list">{{item}}</p>
                 <form action="/completed" method="POST">
-                    <button class="done-btn" type="submit" name="item" value="{{item}}">Complete</button>
+                    <button class="done-btn" type="submit" name="item" value="{{item}}">✓</button>
                 </form>
                 <form action="/deleteOne" method="POST">
-                    <button class="done-btn" type="submit" name="item" value="{{item}}">X</button>
+                    <button class="del-btn" type="submit" name="item" value="{{item}}">X</button>
                 </form>
-
-                <li class="todo-list">{{item}}</li><button onclick="toggleVisible(display_{{id}});">✏</button>
+                <button class="update-btn" onclick="toggleVisible(display_{{id}});"></button>
+                
                 <div id="display_{{id}}" style="visibility:hidden;">
                     <form action="/update/{{id}}" method="POST">
                         <input value="{{item}}" name="item">
-                        <button class="update-btn" type="submit" onclick="toggleHidden(display_{{id}});">Done</button>
+                        <button class="done-btn" type="submit" onclick="toggleHidden(display_{{id}});">Done</button>
                     </form>
                 </div>
 
 
 
                 {{/is_complete}} {{/item}}
-            </ul>
+   
         </div>
 
         <div class="complete-style">
             <h2 class="complete-h2">Completed Tasks</h2>
 
             <form action="/clearall" method="POST">
-                <button class="" type="submit" name="item" value="{{item}}">Clear Completed</button>
+                <button class="clear-btn" type="submit" name="item" value="{{item}}">Clear Completed</button>
             </form>
 
-            <ul>{{#item}} {{#is_complete}}
-                <li class="completed-list">
+           {{#item}} {{#is_complete}}
+                <p class="completed-list">
                     {{item}}
-                </li>
+                </p>
                 {{/is_complete}} {{/item}}
-            </ul>
+          
         </div>
 
     </div>

@@ -1,9 +1,39 @@
 body {
     background: #f1f1f1;
     font-family: 'Patrick Hand SC', cursive;
-    /* display: flex;
-    justify-content: center; */
 }
+
+
+/*------- Notebook Paper Style --------*/
+
+#notebook-paper {
+    background: linear-gradient(to bottom, white 29px, #00b0d7 1px);
+    box-shadow: 0 0 7px rgba(25, 25, 25, 0.2);
+    margin: 50px auto;
+    background-size: 100% 30px;
+    position: relative;
+    padding: 100px 100px 100px 140px;
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+#notebook-paper:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 120px;
+    height: 100%;
+    width: 1px;
+    background: #db4034;
+}
+
+
+/*------- Header and To Do input --------*/
 
 .header {
     width: 100%;
@@ -24,23 +54,7 @@ h1 {
 
 h2 {
     color: #344d75;
-    /* font-size: 1.5rem; */
     font-weight: 100;
-    /* text-align: left; */
-}
-
-#notebook-paper {
-    background: linear-gradient(to bottom, white 29px, #00b0d7 1px);
-    box-shadow: 0 0 7px rgba(25, 25, 25, 0.2);
-    margin: 50px auto;
-    background-size: 100% 30px;
-    position: relative;
-    padding: 100px 100px 100px 140px;
-    overflow: hidden;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
 }
 
 .input-style {
@@ -60,20 +74,10 @@ input.add-btn {
     margin: 10px 10px 0px 45px;
 }
 
-#notebook-paper:before {
-    content: '';
-    display: block;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 120px;
-    height: 100%;
-    width: 1px;
-    background: #db4034;
-}
+
+/*------- Text styles for both new and completed items --------*/
 
 .incomplete-style {
-    /* margin-top: 30px; */
     font-size: 20px;
     line-height: 30.5px;
     margin: 29px 0 25px 0;
@@ -82,13 +86,26 @@ input.add-btn {
 .complete-style {
     margin-top: 20px;
     font-size: 20px;
-    /* line-height:30px; */
     padding-bottom: 40px;
 }
 
-ul {
-    list-style-type: none;
+
+/*------- Button Styles --------*/
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    color: #f4426b;
+    border-radius: 50px;
+    font-size: 1.6rem;
+    outline: none;
 }
+
+
+/* ul {
+    list-style-type: none;
+} */
 
 
 /* ul li.completed-list:before {
@@ -96,46 +113,45 @@ ul {
     color: #21b267;
 } */
 
-.update-btn {
-    content: '✏';
-    color: #2086B2;
-}
-
 ul li.completed-list {
     margin: 6px 0;
     text-decoration: line-through;
-}
-
-
-/* ul li.todo-list {
-    color: red;
-} */
-
-button {
-    background-color: white;
-    cursor: pointer;
-    border: none;
-    color: #f4426b;
-    border-radius: 50px;
-    font-size: 1.6rem;
-    /* font-weight: 700; */
 }
 
 .done-btn {
     background-color: white;
     cursor: pointer;
     border: none;
-    color: #f4426b;
-    /* border-radius: 20px; */
+    color: #21b267;
     font-size: .9rem;
-    /* font-weight: 700; */
     float: left;
-    /* text-align: center; */
     margin: 4px 9px 0 0;
 }
 
 .done-btn:hover {
     color: #344d75;
+}
+
+.del-btn {
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    color: #f4426b;
+    font-size: .9rem;
+    float: left;
+    margin: 4px 9px 0 0;
+}
+
+.update-btn {
+    content: '✏';
+    color: #2086B2;
+    transform: rotate(-40deg);
+    font-size: 1.1rem;
+}
+
+.update-btn:before {
+    content: '✏';
+    color: #2086B2;
 }
 
 button:hover {
@@ -146,14 +162,6 @@ button:hover {
     display: inline;
 }
 
-
-/* p::before {
-    content: "Read this -";
-} */
-
-
-/* .incomplete-h2 {}
-
-.complete-h2 {}
-
-#horizontal-list {} */
+.clear-btn {
+    content: '✓';
+}
